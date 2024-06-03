@@ -24,6 +24,9 @@
 			"titleBar.inactiveBackground": "#45678299",
 			"titleBar.inactiveForeground": "#e7e7e799"
 		},
-		"peacock.color": "#456782"
+		"peacock.color": "#456782",
+		"cSpell.words": [
+			"Khadi"
+		]
 	}
 }

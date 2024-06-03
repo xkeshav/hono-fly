@@ -1,37 +1,69 @@
 import { css } from 'hono/css';
 import { FC } from 'hono/jsx';
+
 import { Layout } from './Layout';
 
 
-const alphabet = Array.from(Array(26),  (_, i) =>  String.fromCharCode(65 + i) );
-
-const parentContainer = css`
+const container = css`
   display:grid;
   grid-gap: 4px;
   grid-template-columns: repeat(5,1fr);
 `
-const itemClass = css`
+
+const letterClass = css`
   display: grid;
-  height: 10rem;
-  color: var(--text, white);
-  background-color: hwb(var(--hue) 0% 0%);
-  place-content: center;
-  font-size: 4rem;
+  grid-auto-flow: row;
+  grid-template-rows:1fr minmax(4px, max-content);
+  justify-items: center;
+  align-content: center;
+  color: white;
+  background-color: hwb(10 10% 60%);
+  font-size: 2rem;
   border:2px solid grey;
+  border-radius: 0.5rem;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  padding-block: 0.5rem;
+  & p {
+    font-size: 4rem;
+    margin: 0;
+    padding:0;
+    & :last-child{
+      font-size: 0.5rem;
+    }
+  }
 }
 `
 
-const Letter:FC = ({what, idx}) => (<div class={itemClass} style={{ "--hue": idx*10 + 20, "--text": idx < 20 ? '#000': '#af0'}}>{what}</div>)
+type LetterBase = {
+  code: number;
+  letter: string;
+}
 
-// MARK: JSX Support
-const Alphabet: FC = () => (
-    <Layout>
-      <h1>Alphabets</h1>
-      <div class={parentContainer}>
-        {alphabet.map(((item,idx) => <Letter idx={idx} what={item} />))}
-      </div>
-    </Layout>
+type LetterProps = {
+  item: LetterBase;
+}
+
+type AlphabetProps = {
+  title?: string;
+  list: LetterBase[];
+}
+
+
+const Letter: FC<LetterProps> = ({ item }) => (
+  <div class={letterClass}>
+    <p>{item.letter}</p>
+    <p>{item.code}</p>
+  </div>
 );
 
-export {Alphabet}
+// MARK: JSX Support
+const Alphabet: FC<AlphabetProps> = ({ title = 'Alphabets', list }) => (
+  <Layout>
+    <h1>{title}</h1>
+    <div class={container}>
+      {list.map(((item) => <Letter item={item} />))}
+    </div>
+  </Layout>
+);
+
+export { Alphabet }

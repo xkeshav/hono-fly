@@ -34,9 +34,19 @@ app.route('/json', jsonWise);
 // MARK: HTML support
 app.route('/html', htmlWise);
 
+// exclude 2345 ' 2353 / 2355 / 2356
+const extraLetters = [2345, 2353,2356];
+const varnmala = Array.from(Array(37),  (_, i) =>  ({code: 2325 +i , letter: String.fromCharCode(2325 + i)}) );
+const varnmala_english = Array.from(Array(26),  (_, i) =>  ({code: 65 +i , letter: String.fromCharCode(65 + i)}) );
+const varnmala_hindi = varnmala.filter( v => !extraLetters.includes(v.code) );
+
 // MARK: JSX Support
 app.get('/alphabet', (c) => {
-  return c.html(<Alphabet/>)
+  return c.html(<Alphabet title={'English Alphabet'} list={varnmala_english}/>)
+});
+
+app.get('/varnmala', (c) => {
+  return c.html(<Alphabet title={'Hindi Varnmala'} list={varnmala_hindi}/>)
 });
 
 // MARK: CSS support
