@@ -2,7 +2,8 @@ import { css } from 'hono/css';
 import { FC } from 'hono/jsx';
 
 import { Layout } from './Layout';
-import { Barahkhadi } from './BarahKhadi';
+import { barahkhadi } from './utils';
+
 
 
 const container = css`
@@ -49,28 +50,20 @@ type AlphabetProps = {
   list: LetterBase[];
 }
 
-
-export const Letter: FC<LetterProps> = ({ item }) => (
-  <div class={letterClass} >
-    <p>{item.letter}</p>
-    <p onClick={() => <Barahkhadi what={item.code} />}>{item.code}</p>
+export const Letter: FC<any> = ({ item }) => (
+  <div class={letterClass}>
+    <p>{item}</p>
   </div>
 );
 
+
 // MARK: JSX Support
-const Alphabet: FC<AlphabetProps> = ({ title = 'Alphabets', list }) => (
-  <Layout>
-    <h1>{title}</h1>
+const Barahkhadi: FC<any> = ( {what} ) => (<Layout>
     <div class={container}>
-      {list.map(((item) => (
-      <>
-        <Letter item={item} />
-        {/* <Barahkhadi what={item.code} /> */}
-      </>
-    )))
-    }
+      {barahkhadi(what).map(l => <Letter item={l} />)}
     </div>
   </Layout>
 );
 
-export { Alphabet }
+
+export { Barahkhadi }

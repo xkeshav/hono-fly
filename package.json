@@ -1,4 +1,9 @@
 {
+  "name": "hono_fly",
+  "version": "1.1.0",
+  "private": false,
+  "publisher": "@xkeshav",
+  "description": "Basic learning pad for hono.js; used this example in a react meetup talk",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,5 +21,26 @@
     "@hono/vite-dev-server": "^0.12.1",
     "vite": "^5.2.12",
     "wrangler": "^3.57.2"
-  }
+  },
+  "keywords": [
+    "honojs",
+    "hono",
+    "server",
+    "typescript"
+  ],
+  "author": {
+    "name": "Keshav Mohta",
+    "email": "xkeshav@gmail.com"
+  },
+  "contributors": [],
+  "license": "see LICENSE in LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xkeshav/hono-fly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xkeshav/hono_fly/issues",
+    "email": "xkeshav@gmail.com"
+  },
+  "homepage": "https://master.hono-fly.pages.dev/"
 }

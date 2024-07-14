@@ -25,8 +25,19 @@
 			"titleBar.inactiveForeground": "#e7e7e799"
 		},
 		"peacock.color": "#456782",
+		"window.title": "${rootName}${separator}${Foldername}${activeFolderMedium}${separator}${activeEditorShort}${separator}",
+		"editor.inlayHints.enabled": "offUnlessPressed",
+		"files.autoSaveWorkspaceFilesOnly": true,
+		"editor.tabCompletion": "onlySnippets",
+		"editor.snippetSuggestions": "top",
 		"cSpell.words": [
-			"Khadi"
-		]
+			"Khadi",
+			"matra",
+			"sanyukat"
+		],
+		"files.exclude": {
+			".github/**": true,
+			".vscode/**": true
+		}
 	}
 }
